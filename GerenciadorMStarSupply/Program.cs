@@ -1,7 +1,15 @@
+using GerenciadorMStarSupply.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var connectionString = builder.Configuration.GetConnectionString("GerenciadorMStarSupplyConnection");
+
+builder.Services.AddDbContext<GerenciadorContext>(opts =>
+opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 var app = builder.Build();
 
