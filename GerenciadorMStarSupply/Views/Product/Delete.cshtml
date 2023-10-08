@@ -1,0 +1,43 @@
+﻿@model Product
+
+@{
+    ViewData["title"] = "Excluir Produto";
+}
+
+<div class="container bg-dark pbg-opacity-50 rounded-5">
+
+    <div class="mb-5 text-center">
+        <h1 class="text-light ">Excluir Produto </h1>
+    </div>
+
+
+    <form method="post" asp-controller="Product" asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+
+        <h2 class="text-light">Tem certeza que deseja excluir o registro abaixo?</h2>
+
+        <div class="mb-3">
+            <label for="Name" class="form-label text-light">Nome:</label>
+            <input type="text" class="form-control" asp-for="Name" id="Name" placeholder="Nome do produto." disabled>
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Amount" class="form-label text-light">Quantidade:</label>
+            <input type="number" class="form-control" asp-for="Amount" id="Amount" placeholder="Quantidade de produto." disabled>
+            <span class="text-danger" asp-validation-for="Amount"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Price" class="form-label text-light">Preço:</label>
+            <input type="number" class="form-control" asp-for="Price" id="Price" placeholder="Preco do produto." disabled>
+            <span class="text-danger" asp-validation-for="Price"></span>
+        </div>
+
+        <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="btn btn-danger w-50">Excluir</button>
+            <a class="btn btn-primary w-50" asp-controller="Product" asp-action="Index">Voltar</a>
+        </div>
+
+    </form>
+</div>
